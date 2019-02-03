@@ -127,13 +127,13 @@ namespace ImageDatabaseCRUD.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FileName,ImageData")] HttpPostedFileBase file, Image img)
+        public ActionResult Edit([Bind(Include = "Id,FileName,ImageData")] HttpPostedFileBase file, int id)
         {
             if (ModelState.IsValid)
             {
                 var image = new Image
                 {
-                    Id = img.Id,
+                    Id = id,
                     FileName = file.FileName
                 };
 
@@ -145,7 +145,8 @@ namespace ImageDatabaseCRUD.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(img);
+
+            return View(db.Images.Find(id));
         }
 
         // GET: Images/Delete/5
@@ -181,7 +182,7 @@ namespace ImageDatabaseCRUD.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        
         protected override void Dispose(bool disposing)
         {
             if (disposing)
