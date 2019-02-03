@@ -1,2 +1,2 @@
 # ImageDatabaseCRUD
-![alt text](ImageDatabaseCRUD/DemoImg.png)
+![alt text](https://raw.githubusercontent.com/ludakludi/ImageDatabaseCRUD/master/DemoImg.png)
