@@ -1,4 +1,4 @@
-# Asp.Net MVC ImageDatabaseCRUD
+# Asp.Net MVC Image Database CRUD
 
 Install-Package Microsoft.CodeAnalysis
 
