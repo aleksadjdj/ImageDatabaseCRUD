@@ -11,7 +11,9 @@ namespace ImageDatabaseCRUD.Models
         public string FileName { get; set; }
         public byte[] ImageData { get; set; }
 
-        public HttpPostedFileBase File { get; set; }
+        // need to remove this File string
+        // Create and Edit view using this just for label
+        public string File { get; set; }
 
         public string ImageSrc
         {

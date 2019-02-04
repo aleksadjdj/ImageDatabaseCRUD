@@ -85,7 +85,6 @@ namespace ImageDatabaseCRUD.Controllers
                 {
                     FileName = file.FileName,
                     ImageData = data,
-                    File = file
                 };
 
 
@@ -129,6 +128,20 @@ namespace ImageDatabaseCRUD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FileName,ImageData")] int id, HttpPostedFileBase file)
         {
+            if(file == null)
+            {
+                var image = db.Images.Find(id);
+                var imageViewModel = new ImageViewModel
+                {
+                    Id = id,
+                    FileName = image.FileName,
+                    ImageData = image.ImageData
+                };
+                
+                return View(imageViewModel);
+            }
+                
+
             if (ModelState.IsValid)
             {
                 var image = new Image
@@ -146,7 +159,7 @@ namespace ImageDatabaseCRUD.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(db.Images.Find(id));
+            return RedirectToAction("Edit", id);
         }
 
         // GET: Images/Delete/5
