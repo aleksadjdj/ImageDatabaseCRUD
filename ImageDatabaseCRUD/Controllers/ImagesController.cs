@@ -69,6 +69,11 @@ namespace ImageDatabaseCRUD.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FileName,ImageData")] HttpPostedFileBase file)
         {
+            if(file == null)
+            {
+                return RedirectToAction("Create");
+            }
+
             if (ModelState.IsValid)
             {
                 var image = new Image
