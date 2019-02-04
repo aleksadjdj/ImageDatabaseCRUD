@@ -20,10 +20,9 @@ namespace ImageDatabaseCRUD.Models
             get
             {
                 string base64 = Convert.ToBase64String(ImageData);
-                string imgSrc = String.Format("data:image/png;base64,{0}", base64);
+                string imgSrc = String.Format("data:image;base64,{0}", base64); //"data:image/png;base64,{0}"
                 return imgSrc;
             }
-
         }
     }
 }
